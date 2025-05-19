@@ -288,7 +288,7 @@ impl limbo_core::IO for PlatformIO {
     }
 
     fn generate_random_number(&self) -> i64 {
-        let random_f64 = Math_random();
+        let random_f64 = random();
         (random_f64 * i64::MAX as f64) as i64
     }
 
@@ -299,7 +299,8 @@ impl limbo_core::IO for PlatformIO {
 
 #[wasm_bindgen]
 extern "C" {
-    fn Math_random() -> f64;
+    #[wasm_bindgen(js_namespace = Math, js_name = random)]
+    fn random() -> f64;
 }
 
 #[wasm_bindgen]

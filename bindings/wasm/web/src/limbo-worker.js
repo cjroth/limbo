@@ -13,7 +13,11 @@ async function initVFS() {
 
 async function initAll() {
   await initVFS();
-  await init();
+  await init({
+    Math: {
+      random: Math.random
+    }
+  });
 }
 
 initAll().then(() => {
